@@ -29,4 +29,11 @@ public class AlgoVisHelper {
         int strokeWidth = w;
         g.setStroke(new BasicStroke(strokeWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
     }
+    public static void pause(long time){
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

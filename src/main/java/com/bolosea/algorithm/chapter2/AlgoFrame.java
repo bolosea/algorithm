@@ -30,6 +30,14 @@ public class AlgoFrame extends JFrame{
         this(title,1024,768);
     }
 
+    //data
+    private Circle[] circles;
+
+    public void render(Circle[] circles){
+        this.circles = circles;
+        repaint();
+    }
+
     public int getCanvasHeight() {
         return canvasHeight;
     }
@@ -55,8 +63,12 @@ public class AlgoFrame extends JFrame{
                     RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.addRenderingHints(hints);
 
+            // 具体绘制
+            AlgoVisHelper.setStrokeWidth(g2d,1);
             AlgoVisHelper.setColor(g2d,Color.MAGENTA);
-            AlgoVisHelper.fillCircle(g2d,canvasWidth/2,canvasHeight/2,200);
+            for (Circle circle:circles){
+                AlgoVisHelper.fillCircle(g2d,circle.x,circle.y,circle.getR());
+            }
 
         }
 
